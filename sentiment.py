@@ -3,11 +3,10 @@ from prefect import flow, task
 from datetime import timedelta
 from prefect.tasks import task_input_hash
 from prefect.artifacts import create_markdown_artifact
-from transformers import pipeline
 
 
 # Get news data
-@task(cache_key_fn=task_input_hash, cache_expiration=timedelta(hours=1))
+@task(cache_key_fn=task_input_hash, cache_expiration=timedelta(hours=0.1))
 def get_news():
     print("news")
 
@@ -21,7 +20,7 @@ def get_news():
 
 
 # Compute sentiment and store scores
-@task(cache_key_fn=task_input_hash, cache_expiration=timedelta(hours=1))
+@task(cache_key_fn=task_input_hash, cache_expiration=timedelta(hours=0.3))
 def calculate_sentiment_scores(news):
     print("sentiment_scores")
 
@@ -35,7 +34,7 @@ def calculate_sentiment_scores(news):
 
 
 # Aggregate sentiment scores
-@task(cache_key_fn=task_input_hash, cache_expiration=timedelta(hours=1))
+@task(cache_key_fn=task_input_hash, cache_expiration=timedelta(hours=0.2))
 def aggregate_sentiment(sentiment_scores):
     print("aggregate sentiment")
 
@@ -49,7 +48,7 @@ def aggregate_sentiment(sentiment_scores):
 
 
 # Send sentiment and trade signal
-@task(cache_key_fn=task_input_hash, cache_expiration=timedelta(hours=1))
+@task(cache_key_fn=task_input_hash, cache_expiration=timedelta(hours=0.4))
 def send_recommendation(aggregated_sentiment):
     print("send recommendation")
 
