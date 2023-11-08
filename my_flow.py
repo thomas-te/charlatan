@@ -1,8 +1,13 @@
 from prefect import flow
 
+@task
+def my_task():
+    return "thomas just did managed exec!"
+    
 @flow(log_prints=True)
 def my_flow():
-    return "thomas just did managed exec!"
+    my_task()
+    
     
 
 if __name__ == '__main__':
