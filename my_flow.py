@@ -1,4 +1,4 @@
-from prefect import flow
+from prefect import flow, task
 
 @task
 def my_task():
