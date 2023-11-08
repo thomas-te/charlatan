@@ -7,4 +7,4 @@ def my_flow():
 
 if __name__ == '__main__':
     flow.from_source("https://github.com/thomas-te/charlatan.git", entrypoint="my_flow.py:my_flow"
-                     ).deploy(name="prov-deployment", work_pool_name="managed-exec")
+                     ).deploy(name="prov-deployment", work_pool_name="prefect-managed")
