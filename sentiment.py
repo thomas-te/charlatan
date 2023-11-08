@@ -71,7 +71,3 @@ def sentiment_flow():
 
     print(news, sentiment_scores, aggregated_sentiment, sent_sentiment)
 
-
-# Serve the flow
-if __name__ == "__main__":
-    sentiment_flow.serve(name="sentiment_flow_deployment", cron="*/5 * * * *")
