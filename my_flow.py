@@ -2,8 +2,8 @@ from prefect import flow, task
 
 @task
 def my_task():
-    phrase = "thomas just did managed exec!"
-    return phrase
+    print("thomas just used managed exec!")
+
     
 @flow(log_prints=True)
 def my_flow():
