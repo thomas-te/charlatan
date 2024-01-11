@@ -1,7 +1,4 @@
 from prefect import flow, task
-from prefect_cloud.work_pools.workers.modal.credentials import ModalCredentials
-
-modal_credentials_block = ModalCredentials.load("thomas-modal-1")
 
 @task
 def my_task():
