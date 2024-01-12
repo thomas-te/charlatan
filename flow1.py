@@ -1,8 +1,11 @@
 from prefect import flow, task
+from prefect.artifacts import create_markdown_artifact
 
 @task
 def my_task():
-    print("thomas just used managed exec!")
+    word = 'hey good job'
+    create_markdown_artifact('report', word, 'resulting content')
+ 
 
     
 @flow(log_prints=True)
